@@ -1,18 +1,16 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Магазин Мортадель</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🛒 Магазин Мортадель</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <h1>🥫 Магазин Мортадель</h1>
-  <div id="product-list"></div>
-  <div id="cart-panel">
-    <button id="checkout-btn">🧾 Оформить заказ</button>
+  <h1>🛒 Магазин Мортадель</h1>
+  <div class="btn-group">
+    <button onclick="submitOrder()">Оформить заказ</button>
+    <button onclick="sendTest()">Тест</button>
   </div>
   <script src="script.js"></script>
 </body>
