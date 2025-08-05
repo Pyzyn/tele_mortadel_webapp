@@ -1,0 +1,56 @@
+
+body {
+  font-family: sans-serif;
+  background: var(--tg-theme-bg-color, #fff);
+  color: var(--tg-theme-text-color, #000);
+  padding: 10px;
+}
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 8px;
+  background: var(--tg-theme-secondary-bg-color, #f0f0f0);
+}
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+.card h3 {
+  margin: 5px 0;
+  font-size: 16px;
+}
+.card p {
+  margin: 0;
+}
+.card .controls {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+.card button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.counter {
+  font-weight: bold;
+}
+#cart-panel {
+  margin-top: 20px;
+  text-align: center;
+}
+#checkout-btn {
+  background-color: #0088cc;
+  padding: 10px 16px;
+  font-size: 16px;
+}

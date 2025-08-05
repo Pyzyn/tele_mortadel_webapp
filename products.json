@@ -1,0 +1,21 @@
+
+[
+  {
+    "id": 1,
+    "name": "Паштет говяжий",
+    "price": 190,
+    "image": "images/pate.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Тушенка классическая",
+    "price": 260,
+    "image": "images/stew.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Паштет куриный",
+    "price": 170,
+    "image": "images/chicken_pate.jpg"
+  }
+]
