@@ -1,37 +1,57 @@
-<script>
+// Скрипт для мини‑магазина Мортадель
+// Этот файл инициализирует API Telegram WebApp только после полной загрузки DOM.
+// Если приложение открыто вне Telegram, пользователю выводится предупреждение.
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Проверяем, доступен ли объект Telegram
+  // Проверяем наличие объекта Telegram.WebApp
   const tg = window.Telegram && window.Telegram.WebApp;
   if (!tg) {
-    alert('⚠️ Telegram WebApp API не обнаружен. Откройте приложение через кнопку в Telegram.');
+    // В браузере Telegram.WebApp не определён
+    alert('⚠️ Telegram WebApp API не обнаружен.\nОткройте приложение через кнопку в Telegram.');
     return;
   }
 
-  tg.ready();   // уведомляем Telegram, что WebApp инициализирован
-  tg.expand();  // разворачиваем окно (опционально)
+  // Уведомляем Telegram, что мини‑приложение готово
+  try {
+    tg.ready();
+    tg.expand();
+  } catch (e) {
+    // В случае возникновения ошибок просто продолжаем
+    console.error('Ошибка инициализации Telegram WebApp', e);
+  }
 
-  // Функция для заказа
-  function submitOrder() {
+  // Находим кнопки
+  const orderBtn = document.getElementById('orderBtn');
+  const testBtn = document.getElementById('testBtn');
+
+  // Обработчик для оформления заказа
+  orderBtn.addEventListener('click', () => {
     const payload = {
       type: 'order',
-      items: [{ id: 1, qty: 2 }, { id: 3, qty: 1 }]
+      items: [
+        { id: 1, qty: 2 },
+        { id: 3, qty: 1 },
+      ],
     };
-    tg.sendData(JSON.stringify(payload));
-    tg.close(); // закрываем окно
-  }
+    try {
+      tg.sendData(JSON.stringify(payload));
+    } catch (e) {
+      console.error('Ошибка отправки заказа', e);
+    }
+    tg.close();
+  });
 
-  // Функция для теста
-  function sendTest() {
+  // Обработчик для тестовой кнопки
+  testBtn.addEventListener('click', () => {
     const payload = {
       type: 'test',
-      message: 'Проверка кнопки Тест'
+      message: 'Проверка кнопки Тест',
     };
-    tg.sendData(JSON.stringify(payload));
+    try {
+      tg.sendData(JSON.stringify(payload));
+    } catch (e) {
+      console.error('Ошибка отправки тестового сообщения', e);
+    }
     tg.close();
-  }
-
-  // Вешаем обработчики кнопок после того, как tg определён
-  document.getElementById('orderBtn').onclick = submitOrder;
-  document.getElementById('testBtn').onclick = sendTest;
+  });
 });
-</script>
